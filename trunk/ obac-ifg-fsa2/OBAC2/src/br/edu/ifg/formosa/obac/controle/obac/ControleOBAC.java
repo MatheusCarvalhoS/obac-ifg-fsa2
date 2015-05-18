@@ -31,54 +31,54 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
 public class ControleOBAC {
-	
+	//
 	//Paineis desta Classe
 		//Painel Principal
 		private JPanel painelPrincipal = null;
 		//Painel de Abas
 		private JTabbedPane painelAbas = null;
-		//Painel para o pSimulação e o pInformação para tentar evitar o problema da sobreposição que ococrre durante o uso dos métodos repaint de ambos os paineis
+		//Painel para o pSimulaï¿½ï¿½o e o pInformaï¿½ï¿½o para tentar evitar o problema da sobreposiï¿½ï¿½o que ococrre durante o uso dos mï¿½todos repaint de ambos os paineis
 		private JPanel painelDeRepintar = null;
 	
 	//Modelos
-		//Modelo Painel de Configuração - Contém os arrays de string utilizados e as strings que são modificadas durante o código
+		//Modelo Painel de Configuraï¿½ï¿½o - Contï¿½m os arrays de string utilizados e as strings que sï¿½o modificadas durante o cï¿½digo
 		private ModeloPainelConfiguracao mPC = null;
 		//Modelo do Ambiente
 		private ModeloAmbiente mA = null;
 		
-	//Visão
-		//Painel de Configuração
+	//Visï¿½o
+		//Painel de Configuraï¿½ï¿½o
 		private VisaoPainelConfiguracao vPC = null;
-		//Painel de Informações
+		//Painel de Informaï¿½ï¿½es
 		private VisaoPainelInformacao vPI = null;
-		//Painel de Fórmulas
+		//Painel de Fï¿½rmulas
 		private VisaoPainelFormulas vpf = null;
-		//Painel de Simulação
+		//Painel de Simulaï¿½ï¿½o
 		private VisaoPainelSimulacao vPS = null;
 		
 	//Controles
-		//Controles do Painel de Fórmulas
+		//Controles do Painel de Fï¿½rmulas
 		private ControlePainelFormulas cpf = null;
-		//Controle Fórmulas Objeto
+		//Controle Fï¿½rmulas Objeto
 		private ControleFormulasObjeto cFO = null;
-		//Controle Fórmulas Superfície
+		//Controle Fï¿½rmulas Superfï¿½cie
 		private ControleFormulasSuperficie cFS = null;
-		//Controle Inicio Simulações
+		//Controle Inicio Simulaï¿½ï¿½es
 		private ControleInicioSimulacoes cIS = null;
-		//Controle das Superfícies
+		//Controle das Superfï¿½cies
 		private ControleSuperficie cS = null;
-		//Controles do Painel de Configuração
+		//Controles do Painel de Configuraï¿½ï¿½o
 		private ControlePainelConfiguracaoEntradaDeDados cPCED = null;
 		private ControlePainelConfiguracaoAtualizacoes cPCA = null;
-		//ControleInicioSimulacoes Painel de Informação
+		//ControleInicioSimulacoes Painel de Informaï¿½ï¿½o
 		private ControlePainelInformacao cpi = null;
 		//ControleInicioSimulacoes da Mola
 		private ControleMolaMouse cMM = null;
 		//ControleListenersCanhao
 		private ControleCanhaoMouse cCM = null;
-		//ControleObstáculoMouse
+		//ControleObstï¿½culoMouse
 		private ControleObstaculoMouse cOM = null;
-		//ControlePropulsão
+		//ControlePropulsï¿½o
 		private ControlePropulsao cP = null;
 	
 	public ControleOBAC(OBAC obac) {
@@ -102,44 +102,44 @@ public class ControleOBAC {
 		painelPrincipal.add(painelDeRepintar);
 		
 		
-		//Painel de Informações
+		//Painel de Informaï¿½ï¿½es
 			vPI = new VisaoPainelInformacao();
 			painelDeRepintar.add(vPI);
-		//ControleInicioSimulacoes do painel de informações
+		//ControleInicioSimulacoes do painel de informaï¿½ï¿½es
 			cpi = new ControlePainelInformacao(vPI);
-		//Painel de Configuração
-			//Modelo Painel de Configuração
+		//Painel de Configuraï¿½ï¿½o
+			//Modelo Painel de Configuraï¿½ï¿½o
 			mPC = new ModeloPainelConfiguracao();
-			//Visão Painel de Configuração
+			//Visï¿½o Painel de Configuraï¿½ï¿½o
 			vPC = new VisaoPainelConfiguracao(mPC);
-			painelAbas.add(vPC, "Configuração");
+			painelAbas.add(vPC, "Configuraï¿½ï¿½o");
 			
-		//Painel de Fórmulas
-			//Visão Painel de Fórmulas
+		//Painel de Fï¿½rmulas
+			//Visï¿½o Painel de Fï¿½rmulas
 			vpf = new VisaoPainelFormulas();
-			painelAbas.add(vpf, "Fórmulas");
-			//Controle painel de fórmulas
+			painelAbas.add(vpf, "Fï¿½rmulas");
+			//Controle painel de fï¿½rmulas
 			cpf = new ControlePainelFormulas(vpf, vPC);
 			
-		//Modelos das Simulações
+		//Modelos das Simulaï¿½ï¿½es
 			//Modelo Escala
 			mA = new ModeloAmbiente(cpi, vpf, cpf);
 			
-		//Painel de Simulação
+		//Painel de Simulaï¿½ï¿½o
 			vPS = new VisaoPainelSimulacao(mA, vPC);
 			painelDeRepintar.add(vPS);
 			
-		//Controles de fórmulas
+		//Controles de fï¿½rmulas
 			cFO = new ControleFormulasObjeto(mA, vpf, cpf);
 			cFS = new ControleFormulasSuperficie(mA, vpf, cpf);//Adicionar o vpf nesta classe para atualizar o pFormulas
-			//Instanciar o Controle de início das simulações
-		//Controle do início das simulações
+			//Instanciar o Controle de inï¿½cio das simulaï¿½ï¿½es
+		//Controle do inï¿½cio das simulaï¿½ï¿½es
 			cIS = new ControleInicioSimulacoes(mA, vPC, vpf, this, cFO, cFS, cpf);
 		
-		//Controle das Superfícies
+		//Controle das Superfï¿½cies
 			cS = new ControleSuperficie(mA.getmS(), vPC, mPC, this);
 		
-		//Controle da propulsão por mola
+		//Controle da propulsï¿½o por mola
 			cMM = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPC, mA, cIS);
 			
 		//Controle Listeners Canhao
@@ -148,7 +148,7 @@ public class ControleOBAC {
 		//ControleObstaculoMouse
 			cOM = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mA.getmObs(), this); 
 			
-		//Controles do Painel de Configuração
+		//Controles do Painel de Configuraï¿½ï¿½o
 			cPCA = new ControlePainelConfiguracaoAtualizacoes(mA, vPC, mPC, vpf, vPI, vPS,mA.getmP(), cOM, this);
 			cPCED = new ControlePainelConfiguracaoEntradaDeDados(vPC);
 			new ControlePainelConfiguracaoExecucao(mA, vPS, vPC, mPC, cPCA, cPCED, cIS, cMM, this);
@@ -162,14 +162,14 @@ public class ControleOBAC {
 			new ControleSimulacao(vPI, vPS, mA, vPC, mPC, this);
 			new ControleAmbiente(mA, vPC, mPC, this, vPS, cPCA);
 			
-		//Controle Propulsão
+		//Controle Propulsï¿½o
 			cP = new ControlePropulsao(vPI, vPS, mA, vPC, mPC, this);
 			
 		//Repintar Applet
 			obac.repaint();
 	}
 	
-	//Metodo para repintar o painel de informações e o de simulação
+	//Metodo para repintar o painel de informaï¿½ï¿½es e o de simulaï¿½ï¿½o
 	public void repinta() {
 		this.painelPrincipal.repaint();
 	}
